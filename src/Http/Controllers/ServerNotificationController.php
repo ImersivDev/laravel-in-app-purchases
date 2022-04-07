@@ -64,18 +64,20 @@ class ServerNotificationController extends Controller
     }
 
     /**
-     * @param AppStoreServerNotificationRequest $request
+     * @param  AppStoreServerNotificationRequestV2  $request
      */
     public function appleV2(AppStoreServerNotificationRequestV2 $request)
     {
         $signedPayload = $request->signedPayload;
         $notification = ServerNotificationV2::parseFromSignedJWS($signedPayload);
-        $appStoreServerNotification = new AppStoreServerNotificationV2($notification);
+        $appStoreNotification = new AppStoreServerNotificationV2($notification);
 
-        // dump($notification, "Appstore Event {$appStoreServerNotification->getType()}: ");
-        Log::info("Appstore Event {$appStoreServerNotification->getType()}", ['data' => print_r($notification, true)]);
+        if ($appStoreNotification->isTest()) {
+            Log::info("Appstore Event {$appStoreNotification->getType()}",
+                ['data' => print_r($notification, true)]);
+        }
 
-        $event = AppStoreEventFactoryV2::create($appStoreServerNotification);
+        $event = AppStoreEventFactoryV2::create($appStoreNotification);
         event($event);
     }
 

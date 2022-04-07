@@ -17,6 +17,7 @@ class EventFactory
     {
         $type = $notification->getType();
         $className = "\Imdhemy\Purchases\Events\AppStoreV2\\" . ucfirst(Str::camel(strtolower($type)));
+
         return new $className($notification);
     }
 }

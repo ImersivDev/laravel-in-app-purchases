@@ -29,7 +29,9 @@ class AppStoreServerNotificationV2 implements ServerNotificationContract
 
     public function getSubscription(array $jsonKey = []): SubscriptionContract
     {
-        return new AppStoreSubscriptionV2($this->notification->getData()->getTransactionInfo());
+        return new AppStoreSubscriptionV2(
+            $this->notification->getData()->getTransactionInfo()
+        );
     }
 
     public function isTest(): bool
@@ -47,12 +49,19 @@ class AppStoreServerNotificationV2 implements ServerNotificationContract
      */
     public function isAutoRenewal(): bool
     {
-        return $this->notification->getData()->getRenewalInfo()->getAutoRenewStatus() == 1;
+        return $this->notification
+                ->getData()
+                ->getRenewalInfo()
+                ->getAutoRenewStatus() == 1;
     }
 
     public function getAutoRenewStatusChangeDate(): ?Time
     {
-        $time = $this->notification->getData()->getRenewalInfo()->getSignedDate();
+        $time = $this->notification
+            ->getData()
+            ->getRenewalInfo()
+            ->getSignedDate();
+
         if (!is_null($time)) {
             return Time::fromAppStoreTimeV2($time);
         }

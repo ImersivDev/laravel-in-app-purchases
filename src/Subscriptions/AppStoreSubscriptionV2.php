@@ -12,8 +12,9 @@ class AppStoreSubscriptionV2 implements SubscriptionContract
     private TransactionInfo $transactionInfo;
 
     /**
-     * AppStoreSubscription constructor.
-     * @param ReceiptInfo $receipt
+     * AppStoreSubscriptionV2 constructor.
+     *
+     * @param  TransactionInfo  $transactionInfo
      */
     public function __construct(TransactionInfo $transactionInfo)
     {
@@ -25,7 +26,9 @@ class AppStoreSubscriptionV2 implements SubscriptionContract
      */
     public function getExpiryTime(): Time
     {
-        return Time::fromAppStoreTimeV2($this->transactionInfo->getExpiresDate());
+        return Time::fromAppStoreTimeV2(
+            $this->transactionInfo->getExpiresDate()
+        );
     }
 
     /**
