@@ -20,7 +20,7 @@
     "require": {
         "php": ">=7.4",
         "ext-json": "*",
-        "imdhemy/appstore-iap": "dev-main",
+        "imdhemy/appstore-iap": "dev-master",
         "imdhemy/google-play-billing": "^1.0",
         "nesbot/carbon": "^2.41"
     },
@@ -50,7 +50,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/dreamsoftin/appstore-iap"
+            "url": "https://github.com/ImersivDev/appstore-iap"
         }
     ],
     "config": {
