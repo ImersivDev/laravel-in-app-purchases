@@ -3,6 +3,7 @@
 
 namespace Imdhemy\Purchases\Events;
 
+use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 use Imdhemy\Purchases\Contracts\PurchaseEventContract;
@@ -16,7 +17,10 @@ abstract class PurchaseEvent implements PurchaseEventContract
 {
     use Dispatchable, SerializesModels;
 
-    protected ServerNotificationContract|AppStoreServerNotification|AppStoreServerNotificationV2|GoogleServerNotification $serverNotification;
+    /**
+     * @var ServerNotificationContract|AppStoreServerNotification|AppStoreServerNotificationV2|GoogleServerNotification
+     */
+    protected $serverNotification;
 
     /**
      * SubscriptionPurchased constructor.
@@ -37,6 +41,7 @@ abstract class PurchaseEvent implements PurchaseEventContract
 
     /**
      * @return SubscriptionContract
+     * @throws GuzzleException
      */
     public function getSubscription(): SubscriptionContract
     {
@@ -45,6 +50,7 @@ abstract class PurchaseEvent implements PurchaseEventContract
 
     /**
      * @return string
+     * @throws GuzzleException
      */
     public function getSubscriptionId(): string
     {
@@ -53,6 +59,7 @@ abstract class PurchaseEvent implements PurchaseEventContract
 
     /**
      * @return string
+     * @throws GuzzleException
      */
     public function getSubscriptionIdentifier(): string
     {
