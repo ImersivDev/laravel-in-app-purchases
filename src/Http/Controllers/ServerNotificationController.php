@@ -3,6 +3,7 @@
 
 namespace Imdhemy\Purchases\Http\Controllers;
 
+use Illuminate\Log\Logger;
 use Illuminate\Support\Facades\Log;
 use Imdhemy\AppStore\ServerNotifications\ServerNotification;
 use Imdhemy\AppStore\V2\ServerNotifications\ServerNotification as ServerNotificationV2;
@@ -71,6 +72,8 @@ class ServerNotificationController extends Controller
         $signedPayload = $request->signedPayload;
         $notification = ServerNotificationV2::parseFromSignedJWS($signedPayload);
         $appStoreNotification = new AppStoreServerNotificationV2($notification);
+        logger('$request->signedPayload');
+        logger($request->signedPayload);
 
         if ($appStoreNotification->isTest()) {
             Log::info("Appstore Event {$appStoreNotification->getType()}",
