@@ -20,7 +20,7 @@
     "require": {
         "php": ">=7.4",
         "ext-json": "*",
-        "imdhemy/appstore-iap": "dev-master",
+        "imdhemy/appstore-iap": "dev-main",
         "imdhemy/google-play-billing": "^0.6",
         "nesbot/carbon": "^2.41"
     },
