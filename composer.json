@@ -21,7 +21,7 @@
         "php": ">=7.4",
         "ext-json": "*",
         "imdhemy/appstore-iap": "dev-master",
-        "imdhemy/google-play-billing": "@dev",
+        "imdhemy/google-play-billing": "^0.6",
         "nesbot/carbon": "^2.41"
     },
     "require-dev": {
@@ -47,28 +47,12 @@
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
         "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
     },
-    "repositories": {
-        "imdhemy/google-play-billing": {
-            "type": "path",
-            "url": "../google-play-billing",
-            "options": {
-                "versions": {
-                    "imdhemy/google-play-billing": "0.6"
-                },
-                "symlink": true
-            }
-        },
-        "imdimdhemy/appstore-iap": {
+    "repositories": [
+        {
             "type": "vcs",
-            "url": "https://github.com/ImersivDev/appstore-iap",
-            "options": {
-                "versions": {
-                    "imdhemy/appstore-iap": "1.1.0"
-                },
-                "symlink": true
-            }
+            "url": "https://github.com/ImersivDev/appstore-iap"
         }
-    },
+    ],
     "config": {
         "sort-packages": true
     },
