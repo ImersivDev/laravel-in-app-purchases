@@ -72,8 +72,6 @@ class ServerNotificationController extends Controller
         $signedPayload = $request->signedPayload;
         $notification = ServerNotificationV2::parseFromSignedJWS($signedPayload);
         $appStoreNotification = new AppStoreServerNotificationV2($notification);
-        logger('$request->signedPayload');
-        logger($request->signedPayload);
 
         if ($appStoreNotification->isTest()) {
             Log::info("Appstore Event {$appStoreNotification->getType()}",
