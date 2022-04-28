@@ -3,6 +3,7 @@
 
 namespace Imdhemy\Purchases\Http\Controllers;
 
+use Illuminate\Log\Logger;
 use Illuminate\Support\Facades\Log;
 use Imdhemy\AppStore\ServerNotifications\ServerNotification;
 use Imdhemy\AppStore\V2\ServerNotifications\ServerNotification as ServerNotificationV2;
